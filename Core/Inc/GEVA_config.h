@@ -1,0 +1,7 @@
+#ifndef GEVA_CONFIG_H
+#define GEVA_CONFIG_H
+
+#define GEVA_SCREEN_WIDTH 128
+#define GEVA_SCREEN_HEIGHT 64
+
+#endif // GEVA_CONFIG_H
