@@ -78,13 +78,10 @@ C_SOURCES =  \
 Core/Src/GEVA.c \
 Core/Src/adc.c \
 Core/Src/buttons_definition.c \
-Core/Src/edge_detector.c \
 Core/Src/flash_writer.c \
-Core/Src/fonts.c \
 Core/Src/high_level_time.c \
 Core/Src/icons.c \
 Core/Src/main.c \
-Core/Src/menu.c \
 Core/Src/pb_behaviour.c \
 Core/Src/pid.c \
 Core/Src/power_modulator.c \
