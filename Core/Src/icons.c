@@ -34,6 +34,21 @@ void icon_settings_clear_init() {
 
 /* ================================================================================================================ */
 
+vbc_file empty_16x16;
+
+uint8_t empty_16x16_sv[30] = {0};
+
+void icon_empty_16x16_init() {
+    empty_16x16.header.id = 0xa7;
+    empty_16x16.header.width = 0x0f;
+    empty_16x16.header.height = 0x0f;
+    empty_16x16.header.byte_cnt_h = 0x00;
+    empty_16x16.header.byte_cnt_l = 0x23;
+    empty_16x16.body = empty_16x16_sv;
+}
+
+/* ================================================================================================================ */
+
 vbc_file play_clear;
 
 uint8_t play_clear_sv[30] = 

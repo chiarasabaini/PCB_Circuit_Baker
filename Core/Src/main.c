@@ -214,43 +214,6 @@ void heating_animation_clear(){
 
 /* ================================================================================================================ */
 
-
-void half_transfer_handler(DMA_HandleTypeDef *hdma)
-{
-    for(int i=0; i<2000; i++){
-      Vrms += adc_values[i];
-    }
-}
-
-void transfer_handler(DMA_HandleTypeDef *hdma)
-{
-    // Azione quando il trasferimento è completato
-}
-
-// Nel codice di inizializzazione del DMA
-
-//void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef* hadc){
-//
-//}
-void HAL_DMA_Callback(DMA_HandleTypeDef *hdma)
-{
-    if (__HAL_DMA_GET_FLAG(hdma_adc, DMA_FLAG_HT1))  // Half Transfer Interrupt Flag
-    {
-        __HAL_DMA_CLEAR_FLAG(hdma_adc, DMA_FLAG_HT1);
-        HAL_GPIO_TogglePin(SSR_A_GPIO_Port,SSR_A_Pin);
-        for(int i=0; i<2000; i++){
-        Vrms += adc_values[i];
-        }
-        // Azione da eseguire quando metà buffer è trasferito
-    }
-
-    if (__HAL_DMA_GET_FLAG(hdma_adc, DMA_FLAG_TC1))  // Transfer Complete Interrupt Flag
-    {
-        __HAL_DMA_CLEAR_FLAG(hdma_adc, DMA_FLAG_TC1);
-        // Azione da eseguire quando il trasferimento è completo
-    }
-}
-
 /* USER CODE END 0 */
 
 /**
@@ -324,10 +287,6 @@ int main(void)
   target_temp_chart.x_division = 52;
   target_temp_chart.max_x = 280;
 
-  //__HAL_DMA_ENABLE_IT(&hdma_adc, DMA_IT_HT);
-  //__HAL_DMA_ENABLE_IT(&hdma_adc, DMA_IT_TC);
-  //HAL_DMA_RegisterCallback(&hdma_adc, HAL_DMA_XFER_HALFCPLT_CB_ID, half_transfer_handler);
-  //HAL_DMA_RegisterCallback(&hdma_adc, HAL_DMA_XFER_CPLT_CB_ID, transfer_handler);
 
 /* ====================================================display init================================================ */
 
@@ -470,11 +429,6 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
   
-  //char nf_buffer[50] = {0};
-  //char filtered_buffer[50] = {0};
-  //uint16_t adc_va = adc_values[2];
-  //uint16_t f_adc_va = moving_average_filter(adc_va);
-
 
   /* ============================================ REFRESH LCD ======================================================= */
 

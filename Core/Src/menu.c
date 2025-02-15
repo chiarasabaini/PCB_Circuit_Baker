@@ -214,6 +214,7 @@ void none();
 void menu_init() {
 
     icon_settings_clear_init();
+    icon_empty_16x16_init();
     icon_play_clear_init();
     icon_keep_init();
     icon_cooling_init();
@@ -575,7 +576,7 @@ void handle_input() {
 
                 case INPUT_DOWN:
                    
-                    if(menu.tabs_vect[menu.current_tab].selected_item == PLAY){
+                    if(menu.tabs_vect[menu.current_tab].selected_item == PLAY && operation_cycle.status != CYCLE_RUNNING){
                         
                         menu.tabs_vect[menu.current_tab].items[menu.tabs_vect[menu.current_tab].selected_item].update = true;
                         menu.tabs_vect[menu.current_tab].items[menu.tabs_vect[menu.current_tab].selected_item].item_data.icon = &play_clear;
@@ -588,7 +589,7 @@ void handle_input() {
                 break;
                 case INPUT_SELECT:
 
-                    menu.tabs_vect[menu.current_tab].items[menu.tabs_vect[menu.current_tab].selected_item].select_function();
+                        menu.tabs_vect[menu.current_tab].items[menu.tabs_vect[menu.current_tab].selected_item].select_function();
 
                 break;
 
@@ -1099,6 +1100,7 @@ void play_selected(){
     temp_pid.previous_error = 0;
     
     operation_cycle.status = (operation_cycle.status == CYCLE_RUNNING) ? CYCLE_STOP : CYCLE_RUNNING;
+    menu.tabs_vect[menu.current_tab].items[SETTINGS].item_data.icon = (operation_cycle.status == CYCLE_RUNNING) ? &empty_16x16 : &settings_clear;
 }
 
 void tab_settings_selected(){
@@ -1606,6 +1608,11 @@ void profile_selection_selected(){
     clr_buffer(&vb);
     menu.current_tab = TAB_MAIN;
     menu.tabs_vect[menu.current_tab].items[PROFILE_NAME].update = true;
+    menu.tabs_vect[menu.current_tab].selected_item = PLAY;
+    menu.tabs_vect[menu.current_tab].items[PLAY].item_data.icon = &play_inv;
+    menu.tabs_vect[menu.current_tab].items[PLAY].update = true;
+    menu.tabs_vect[menu.current_tab].items[SETTINGS].item_data.icon = &settings_clear;
+    menu.tabs_vect[menu.current_tab].items[SETTINGS].update = true;
     operation_cycle.cycle_type = CYCLE_MODE_CURVE;
     display_temperature_profile(temp_curves[reflow_profile_index-1], &target_temp_chart);
 
@@ -1774,6 +1781,11 @@ void target_temp_static_mode_selected(){
     sprintf(profile_name_str, "%s", "STATIC MODE");
     menu.current_tab = TAB_MAIN;
     menu.tabs_vect[menu.current_tab].items[PROFILE_NAME].update = true;
+    menu.tabs_vect[menu.current_tab].selected_item = PLAY;
+    menu.tabs_vect[menu.current_tab].items[PLAY].item_data.icon = &play_inv;
+    menu.tabs_vect[menu.current_tab].items[PLAY].update = true;
+    menu.tabs_vect[menu.current_tab].items[SETTINGS].item_data.icon = &settings_clear;
+    menu.tabs_vect[menu.current_tab].items[SETTINGS].update = true;
     operation_cycle.cycle_type = CYCLE_MODE_STATIC;
     
 } 

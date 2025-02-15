@@ -9,6 +9,10 @@ extern vbc_file settings_clear;
 extern uint8_t settings_clear_sv[30];
 void icon_settings_clear_init();
 
+extern vbc_file empty_16x16;
+extern uint8_t empty_16x16_sv[30];
+void icon_empty_16x16_init();
+
 extern vbc_file play_clear;
 extern uint8_t play_clear_sv[30];
 void icon_play_clear_init();
