@@ -18,7 +18,7 @@
 
 ## Project Overview
 
-This project transforms a small electric pizza oven, into a functional pcb oven.
+This project aims to transforms a small electric pizza oven, into a functional pcb oven for reflow operations. It leverages on a custom board based on the STM32F030 microcontroller, with integrated power supply, thermocoupler conditioners and SSR driving stages.
 
 ---
 
@@ -42,31 +42,39 @@ PCB-Circuit-Baker
 ### Core Functionality
 
 - **STM32F030CCT6**:
-  - Manages the oven's functionalities
+  - generates temperature profile, based on user input
+  - reads temperature from type K thermocouples
+  - modulates power to heating elements
+  - handles user interaction with the buttons board 
 
-- **LCD Display**:
-  - serves as GUI for the user to interact with the oven
 
-- **User Board**:
-    - UI made of buttons 
 
 ---
 
 ### Features
 
-- **Wave Generation**:
-  - something something something
+- **Mode of Operation**
+  - **static mode**: lets user select a temperature to keep.
 
-- **Static Mode**:
-    - something something something
+  - **temperature control**: lets user create a temperature to follow over a time period: profiles are saved
+
+- **PID Parameter**
+  - tunable PID parameter
+  - parameter are saved
+
+- **LCD Display**:
+  - serves as GUI for the user to interact with the oven: displays profile and current temperature
+
+- **User Board**:
+    - made of tactile switches 
 
 ---
 
 ## Usage
 
-1. Connect the oven to the power supply
-2. Turn on the oven
-3. Select the desired temperature
+1. Connect the oven to main line
+2. (optional) Adjust parameters
+3. Select the desired mode of operation
 4. Insert the pcb
 5. Press the start button
 6. Wait for the process to finish
@@ -79,24 +87,33 @@ PCB-Circuit-Baker
 
 To use this project, you will need the following software:
 
-- seto ti
+- OpenOCD
+- ARM toolchain
 
 ## Hardware Requirements
 
 To use this project, you will need the following hardware:
 
 - pizza oven
+- depending on heating capabilities of the oven, more heating elements
+- fully assembled controller board
+- fully assembled user input board
+- fully assembled display board
+- 2 type K thermocouple
+- 2 Solid State Relay, with correct power rating
+- wires, metal sheet scraps and insulating material
+- a bit of ingenuity to integrate all components togheter
 
 ### Schematic
 
-nice picture of the schematic
+<img width="1672" alt="image" src="https://github.com/user-attachments/assets/6754baf5-04f9-46c7-9865-6e7bbe14c434" />
 
 ---
 
 ## Build and Run
 
-tpiacess
-
+git clone git@github.com:chiarasabaini/PCB_Circuit_Baker.git
+make flash -j
 ---
 
 ## Contribution
