@@ -183,11 +183,8 @@ $ make flash -j -f STM32Make.make
 ```
 ---
 
-## Contribution
+## Contributors
 
-- Aris Tomaselli
-- Chiara Sabaini
-- Silvia Bragantini
-- Andrea Aldeni
+[![Aris Tomaselli](https://badgen.net/badge/icon/Aris%20Tomaselli/F96C5F?icon=github&label&labelColor=000)](https://github.com/Kirseline) [![Chiara Sabaini](https://badgen.net/badge/icon/Chiara%20Sabaini/9CD96C?icon=github&label&labelColor=000)](https://github.com/chiarasabaini) [![Silvia Bragantini](https://badgen.net/badge/icon/Silvia%20Bragantini/66BDFF?icon=github&label&labelColor=000)](https://github.com/silviabrg) [![Andrea Aldeni](https://badgen.net/badge/icon/Andrea%20Aldeni/B67DFF?icon=github&label&labelColor=000)](https://github.com/Andr3aAld3)
 
 > This project is a collaborative effort by all team members. We adopted a pair programming approach, frequently meeting to work together. Tasks were shared among us, and we supported each other in solving any challenges that arose.
