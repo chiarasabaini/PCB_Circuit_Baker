@@ -23,7 +23,7 @@
 This project aims to transform a small electric pizza oven, into a functional PCB oven for reflow operations. It leverages on a custom board based on the STM32F030 microcontroller, with integrated power supply, thermocouple conditioners and SSR driving stages.
 
 **See more:**
-- [Pitch Video](https://www.youtube.com)
+- [Pitch Video](https://drive.google.com/file/d/17dmBQRDX6SGHWbUks3T6ckMqE-awX6GH/view?usp=sharing)
 - [Presentation](https://docs.google.com/presentation/d/1FvlHxZEMd3MMXUBN6C8jSyhKtvd0TKJ8RmZ0mUIsl6k/edit?usp=sharing)
 
 ---
