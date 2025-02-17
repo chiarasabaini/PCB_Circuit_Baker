@@ -3,28 +3,27 @@
 ---
 
 ## Table of Contents
+
 - [Project Overview](#project-overview)
-- [See more](#see-more)
-- [Project structure](#project-structure)
+- [Project Structure](#project-structure)
 - [Core Functionality](#core-functionality)
 - [Features](#features)
+- [Control Flow](#control-flow)
 - [Usage](#usage)
-- [Software Requirements](#software-requirements)
 - [Hardware Requirements](#hardware-requirements)
-- [Build and Run](#build-and-run)
+  - [Schematic](#schematic)
+- [Software Requirements](#software-requirements)
+  - [Build and Run](#build-and-run)
 - [Contribution](#contribution)
 
 ---
 
 ## Project Overview
 
-This project aims to transforms a small electric pizza oven, into a functional pcb oven for reflow operations. It leverages on a custom board based on the STM32F030 microcontroller, with integrated power supply, thermocoupler conditioners and SSR driving stages.
+This project aims to transform a small electric pizza oven, into a functional PCB oven for reflow operations. It leverages on a custom board based on the STM32F030 microcontroller, with integrated power supply, thermocouple conditioners and SSR driving stages.
 
----
-
-## See more
-
-- [Pitch video](https://www.youtube.com)
+**See more:**
+- [Pitch Video](https://www.youtube.com)
 - [Presentation](https://docs.google.com/presentation/d/1FvlHxZEMd3MMXUBN6C8jSyhKtvd0TKJ8RmZ0mUIsl6k/edit?usp=sharing)
 
 ---
@@ -32,6 +31,7 @@ This project aims to transforms a small electric pizza oven, into a functional p
 ## Project structure
 
 PCB-Circuit-Baker
+
 ```
 📁PCB-Circuit-Baker
 ├──📁Core
@@ -56,7 +56,7 @@ PCB-Circuit-Baker
 │   │   ├── stm32f0xx_hal_conf.h
 │   │   ├── stm32f0xx_it.h
 │   │   └── tab_template.h
-│   └── 📁Src                       #function implementation
+│   └──📁Src                       #function implementation
 │       ├── adc.c
 │       ├── buttons_definition.c
 │       ├── edge_detector.c
@@ -75,7 +75,7 @@ PCB-Circuit-Baker
 │       ├── stm32f0xx_it.c
 │       ├── system_stm32f0xx.c
 │       └── tab_template.c
-├── 📁Drivers                         #HAL drivers
+├──📁Drivers                         #HAL drivers
 ├── .gitignore
 ├── .stm32env
 ├── Firmware.ioc
@@ -94,29 +94,29 @@ PCB-Circuit-Baker
 ### Core Functionality
 
 - **STM32F030CCT6**:
-  - generates temperature profile, based on user input
-  - reads temperature from type K thermocouples
-  - modulates power to heating elements
-  - handles user interaction with the buttons board 
+  - Generates temperature profile, based on user input
+  - Reads temperature from type K thermocouples
+  - Modulates power given to the heating elements
+  - Handles user interaction with the buttons board 
 
 ---
 
 ### Features
 
-- **Mode of Operation**
-  - **static mode**: lets user select a temperature to keep.
+- **Mode of Operation**:
+  - **Static Mode**: allows the user to select and maintain a target temperature.
+  - **Temperature Control**: Enables the user to create and follow a temperature profile over a given time period. Profiles can be saved for future use.
 
-  - **temperature control**: lets user create a temperature to follow over a time period: profiles are saved
-
-- **PID Parameter**
-  - tunable PID parameter
-  - parameter are saved
+- **PID Parameters**:
+  - Tunable PID parameters to adjust the control system.
+  - Parameters are saved for consistency across sessions.
 
 - **LCD Display**:
-  - serves as GUI for the user to interact with the oven: displays profile and current temperature
+  - Acts as the GUI for user interaction with the oven.
+  - Displays the temperature profile and current temperature.
 
 - **User Board**:
-    - made of tactile switches 
+  - Composed of tactile switches for user interaction with the oven.
 
 ---
 
@@ -127,14 +127,14 @@ PCB-Circuit-Baker
 
 ## Usage
 
-1. Connect the oven to main line
-2. (optional) Adjust parameters
-3. Select the desired mode of operation
-4. Insert the pcb
-5. Press the start button
-6. Wait for the process to finish
-7. Remove the pcb
-8. Enjoy your pizza!
+1. Connect the oven to the main power supply.
+2. (Optional) Adjust the parameters as needed.
+3. Select the desired mode of operation.
+4. Insert the PCB into the oven.
+5. Press the start button.
+6. Wait for the reflow process to complete.
+7. Remove the PCB carefully.
+8. Enjoy your ~~pizza~~ perfectly soldered PCB!
 
 ---
 
@@ -142,13 +142,13 @@ PCB-Circuit-Baker
 
 To use this project, you will need the following hardware:
 
-- pizza oven
+- electric pizza oven
 - depending on heating capabilities of the oven, more heating elements
 - controller board
 - 2 type K thermocouple
 - 2 Solid State Relay, with correct power rating
 - wires, metal sheet scraps and insulating material
-- a bit of ingenuity to integrate all components togheter
+- a bit of ingenuity to integrate all components together
 
 ### Schematic
 
@@ -166,10 +166,20 @@ To use this project, you will need the following software:
 ---
 
 ## Build and Run
-```
-git clone git@github.com:chiarasabaini/PCB_Circuit_Baker.git
 
-make flash -j
+1. Clone the repository:
+```shell
+$ git clone git@github.com:chiarasabaini/PCB_Circuit_Baker.git
+```
+
+2. Navigate to the project directory:
+```shell
+$ cd PCB_Circuit_Baker
+```
+
+3. Build the project:
+```shell
+$ make flash -j -f STM32Make.make
 ```
 ---
 
